@@ -16,6 +16,12 @@ public class Accounts extends Controller
         render("login.html");
     }
 
+    public static void logout()
+    {
+        session.clear();
+        redirect ("/");
+    }
+
     public static void register(String firstname, String lastname, String email, String password)
     {
         Logger.info("Registering new user " + email);
@@ -37,12 +43,6 @@ public class Accounts extends Controller
             Logger.info("Authentication failed");
             redirect("/login");
         }
-    }
-
-    public static void logout()
-    {
-        session.clear();
-        redirect ("/");
     }
 
     public static Member getLoggedInMember()
